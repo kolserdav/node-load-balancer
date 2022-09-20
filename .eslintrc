@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": false,
+    "es2021": true
+  },
+  "extends": ["airbnb", "eslint-config-prettier", "eslint:recommended", "prettier"],
+  "ignorePatterns": "node_modules",
+  "plugins": ["prettier", "eslint-plugin-prettier"],
+  "rules": {
+    "prettier/prettier": 1,
+    "no-underscore-dangle": 0
+  }
+}
