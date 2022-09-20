@@ -1,16 +1,30 @@
-# @kolserdav/load-balancer
+# flight-proxy-server
 
-Simple Node runtime script that making it easy to change server infrastructure without disrupting the user experience. This tool was created solely to implement the functionality of switching the active server in order to determine which server is currently active from two servers and the client needs to be redirected to it. The logic for determining the load is on the application side (not on the library side!), The choice of the active server is controlled through callback `getServers`.
-
-## Why
+Simple Node proxy server with getting the address on each request through callback `getServer`.
 
 ## Install
 
 ```sh
-npm i @kolserdav/load-balancer
+npm i flight-proxy-server
+```
+
+## Usage
+
+```javascript
+const proxy = require('flight-proxy-server);
+
+proxy({
+  port: 3003,
+  getServer: async (req) => {
+    console.log(req.url);
+    // here check which server to forward the request to
+    return {
+      url: 'http://localhost:3000',
+    };
+  },
+});
 ```
 
 ## Examples
 
-[examples/index.js](./examples/index.js)  
-[examples/more-than-two.js](./examples/more-than-two.js)
+[examples/index.js](./examples/index.js)

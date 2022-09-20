@@ -2,7 +2,6 @@ export = loadBalancer;
 /**
  * @typedef {{
  *    url: string;
- *    active: boolean;
  *  }} Server
  *
  * @typedef {(req: express.Request, res: express.Response) => void} Handler
@@ -10,20 +9,19 @@ export = loadBalancer;
 /**
  *
  * @param {{
- *  getServers: () => Promise<Server[] | null>;
+ *  getServer: (req: express.Request) => Promise<Server>;
  *  port: number;
  * }} args
  */
 declare function loadBalancer(args: {
-    getServers: () => Promise<Server[] | null>;
+    getServer: (req: express.Request) => Promise<Server>;
     port: number;
-}): void;
+}): Promise<void>;
 declare namespace loadBalancer {
     export { Server, Handler };
 }
+import express = require("express");
 type Server = {
     url: string;
-    active: boolean;
 };
 type Handler = (req: express.Request, res: express.Response) => void;
-import express = require("express");

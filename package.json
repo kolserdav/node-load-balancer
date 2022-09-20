@@ -1,7 +1,7 @@
 {
-  "name": "@kolserdav/load-balancer",
+  "name": "flight-proxy-server",
   "version": "0.0.1",
-  "description": "Simple Node runtime script that making it easy to change server infrastructure without disrupting the user experience.",
+  "description": "Simple Node proxy server",
   "main": "index.js",
   "files": [
     "index.js",
