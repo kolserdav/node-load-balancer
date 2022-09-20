@@ -11,17 +11,20 @@ npm i flight-proxy-server
 ## Usage
 
 ```javascript
-const proxy = require('flight-proxy-server');
+const { proxy } = require('../index');
+
+const getServer = async (req) => {
+  console.log(req.url);
+  // ... here check which server to forward the request to
+  const result = {
+    url: 'http://localhost:3000',
+  };
+  return result;
+};
 
 proxy({
-  port: 3000,
-  getServer: async (req) => {
-    console.log(req.url);
-    // here check which server to forward the request to
-    return {
-      url: 'http://localhost:3001',
-    };
-  },
+  port: 3003,
+  getServer,
 });
 ```
 

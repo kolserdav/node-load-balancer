@@ -1,27 +1,25 @@
-export = loadBalancer;
+export type Server = {
+    url: string;
+};
+export type Callback = (req: express.Request) => Promise<Server>;
+export type Handler = (req: express.Request, res: express.Response) => void;
 /**
  * @typedef {{
  *    url: string;
  *  }} Server
  *
+ * @typedef {(req: express.Request) => Promise<Server>} Callback
  * @typedef {(req: express.Request, res: express.Response) => void} Handler
  */
 /**
  *
  * @param {{
- *  getServer: (req: express.Request) => Promise<Server>;
+ *  getServer: Callback;
  *  port: number;
  * }} args
  */
-declare function loadBalancer(args: {
-    getServer: (req: express.Request) => Promise<Server>;
+export function proxy(args: {
+    getServer: Callback;
     port: number;
 }): Promise<void>;
-declare namespace loadBalancer {
-    export { Server, Handler };
-}
 import express = require("express");
-type Server = {
-    url: string;
-};
-type Handler = (req: express.Request, res: express.Response) => void;

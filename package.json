@@ -1,6 +1,6 @@
 {
   "name": "flight-proxy-server",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Simple Node proxy server",
   "repository": "https://github.com/kolserdav/node-proxy-server.git",
   "main": "index.js",
@@ -10,8 +10,7 @@
   ],
   "scripts": {
     "dev": "nodemon examples/index.js",
-    "build": "tsc -p ./jsconfig.json",
-    "deploy": "npm run build && npm publish"
+    "build": "tsc -p ./jsconfig.json"
   },
   "keywords": [
     "load balancer",

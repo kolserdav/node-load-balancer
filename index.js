@@ -8,17 +8,18 @@ const server = express();
  *    url: string;
  *  }} Server
  *
+ * @typedef {(req: express.Request) => Promise<Server>} Callback
  * @typedef {(req: express.Request, res: express.Response) => void} Handler
  */
 
 /**
  *
  * @param {{
- *  getServer: (req: express.Request) => Promise<Server>;
+ *  getServer: Callback;
  *  port: number;
  * }} args
  */
-async function loadBalancer(args) {
+async function proxy(args) {
   const { getServer, port } = args;
   /**
    * @type {Handler}
@@ -35,4 +36,4 @@ async function loadBalancer(args) {
   });
 }
 
-module.exports = loadBalancer;
+module.exports = { proxy };
