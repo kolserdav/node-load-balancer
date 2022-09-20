@@ -13,6 +13,9 @@ const getServer = async (req) => {
    */
   const result = {
     url: 'http://localhost:3000',
+    headers: {
+      test: '1',
+    },
   };
   return result;
 };

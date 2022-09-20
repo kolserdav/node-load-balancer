@@ -6,6 +6,7 @@ const server = express();
 /**
  * @typedef {{
  *    url: string;
+ *    headers?: Record<string, string>
  *  }} ProxyTarget
  *
  * @typedef {(req: express.Request) => Promise<ProxyTarget>} ProxyCallback
@@ -24,8 +25,8 @@ async function proxy(args) {
    * @type {(req: express.Request, res: express.Response) => Promise<void>}
    */
   const handler = async (req, res) => {
-    const { url } = await getServer(req);
-    req.pipe(request({ url: url + req.url })).pipe(res);
+    const { url, headers } = await getServer(req);
+    req.pipe(request({ url: url + req.url, headers })).pipe(res);
   };
   server.all('*', handler);
 
