@@ -5,7 +5,8 @@ const servers = [
   { url: 'http://localhost:3001', active: false },
 ];
 
-function getServers() {
+function getServers(req) {
+  console.log(req.url);
   return servers;
 }
 

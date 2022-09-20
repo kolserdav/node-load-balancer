@@ -1,13 +1,21 @@
 {
-  "name": "load-balancer",
+  "name": "@kolserdav/load-balancer",
   "version": "0.0.1",
-  "description": "",
+  "description": "Simple Node runtime script that making it easy to change server infrastructure without disrupting the user experience.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "dev": "nodemon examples/index.js",
     "build": "tsc -p ./jsconfig.json"
   },
-  "keywords": [],
+  "keywords": [
+    "load balancer",
+    "node",
+    "express"
+  ],
   "author": "kolserdav",
   "license": "ISC",
   "devDependencies": {

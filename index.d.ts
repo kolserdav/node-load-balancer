@@ -10,12 +10,12 @@ export = loadBalancer;
 /**
  *
  * @param {{
- *  getServers: () => Server[];
+ *  getServers: () => Promise<Server[] | null>;
  *  port: number;
  * }} args
  */
 declare function loadBalancer(args: {
-    getServers: () => Server[];
+    getServers: () => Promise<Server[] | null>;
     port: number;
 }): void;
 declare namespace loadBalancer {

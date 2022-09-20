@@ -10,5 +10,5 @@
     "esModuleInterop": true,
     "moduleResolution": "node"
   },
-  "exclude": ["node_modules"]
+  "include": ["index.js"]
 }

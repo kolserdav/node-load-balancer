@@ -13,25 +13,47 @@ const server = express();
  */
 
 /**
+ * @type {Server[]}
+ */
+let servers = [];
+
+/**
  *
  * @param {{
- *  getServers: () => Server[];
+ *  getServers: (headers?: express.Request) => Promise<Server[]>;
  *  port: number;
  * }} args
  */
-function loadBalancer(args) {
+async function loadBalancer(args) {
   const { getServers, port } = args;
-  const servers = getServers();
+  servers = await getServers();
+  if (servers.length !== 2) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      new Date(),
+      'Servers length is not 2, with a different value, unexpected operation is possible'
+    );
+  }
   /**
    * @type {Handler}
    */
-  const handler = (req, res) => {
+  const handler = async (req, res) => {
     let url = '';
+    servers = await getServers(req);
     for (let i = 0; servers[i]; i++) {
       const serv = servers[i];
       if (serv.active) {
         url = serv.url;
       }
+    }
+    if (url === '') {
+      const message = 'Load balancer can not get url';
+      // eslint-disable-next-line no-console
+      console.warn(new Date(), message, servers);
+      res.status(500).json({
+        message,
+      });
+      return;
     }
     req.pipe(request({ url: url + req.url })).pipe(res);
   };
