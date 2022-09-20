@@ -1,25 +1,23 @@
-export type Server = {
+export type ProxyTarget = {
     url: string;
 };
-export type Callback = (req: express.Request) => Promise<Server>;
-export type Handler = (req: express.Request, res: express.Response) => void;
+export type ProxyCallback = (req: express.Request) => Promise<ProxyTarget>;
 /**
  * @typedef {{
  *    url: string;
- *  }} Server
+ *  }} ProxyTarget
  *
- * @typedef {(req: express.Request) => Promise<Server>} Callback
- * @typedef {(req: express.Request, res: express.Response) => void} Handler
+ * @typedef {(req: express.Request) => Promise<ProxyTarget>} ProxyCallback
  */
 /**
  *
  * @param {{
- *  getServer: Callback;
+ *  getServer: ProxyCallback;
  *  port: number;
  * }} args
  */
 export function proxy(args: {
-    getServer: Callback;
+    getServer: ProxyCallback;
     port: number;
 }): Promise<void>;
 import express = require("express");

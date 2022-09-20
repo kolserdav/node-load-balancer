@@ -6,23 +6,22 @@ const server = express();
 /**
  * @typedef {{
  *    url: string;
- *  }} Server
+ *  }} ProxyTarget
  *
- * @typedef {(req: express.Request) => Promise<Server>} Callback
- * @typedef {(req: express.Request, res: express.Response) => void} Handler
+ * @typedef {(req: express.Request) => Promise<ProxyTarget>} ProxyCallback
  */
 
 /**
  *
  * @param {{
- *  getServer: Callback;
+ *  getServer: ProxyCallback;
  *  port: number;
  * }} args
  */
 async function proxy(args) {
   const { getServer, port } = args;
   /**
-   * @type {Handler}
+   * @type {(req: express.Request, res: express.Response) => Promise<void>}
    */
   const handler = async (req, res) => {
     const { url } = await getServer(req);

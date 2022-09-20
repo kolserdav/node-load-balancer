@@ -1,15 +1,15 @@
 // @ts-check
 // eslint-disable-next-line no-unused-vars
-const { proxy, Callback, Server } = require('../index');
+const { proxy, ProxyTarget, ProxyCallback } = require('../index');
 
 /**
- * @type {Callback}
+ * @type {ProxyCallback}
  */
 const getServer = async (req) => {
   console.log(req.url);
   // ... here check which server to forward the request to
   /**
-   * @type {Server}
+   * @type {ProxyTarget}
    */
   const result = {
     url: 'http://localhost:3000',
