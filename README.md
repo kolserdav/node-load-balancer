@@ -11,7 +11,7 @@ npm i flight-proxy-server
 ## Usage
 
 ```javascript
-const { proxy } = require('../index');
+const { proxy } = require('flight-proxy-server');
 
 const getServer = async (req) => {
   console.log(req.url);
