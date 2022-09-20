@@ -8,6 +8,7 @@
   "plugins": ["prettier", "eslint-plugin-prettier"],
   "rules": {
     "prettier/prettier": 1,
-    "no-underscore-dangle": 0
+    "no-underscore-dangle": 0,
+    "no-plusplus": 0
   }
 }
