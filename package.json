@@ -1,7 +1,8 @@
 {
   "name": "flight-proxy-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple Node proxy server",
+  "repository": "https://github.com/kolserdav/node-proxy-server.git",
   "main": "index.js",
   "files": [
     "index.js",
@@ -9,7 +10,8 @@
   ],
   "scripts": {
     "dev": "nodemon examples/index.js",
-    "build": "tsc -p ./jsconfig.json"
+    "build": "tsc -p ./jsconfig.json",
+    "deploy": "npm run build && npm publish"
   },
   "keywords": [
     "load balancer",
@@ -17,7 +19,7 @@
     "express"
   ],
   "author": "kolserdav",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/node": "^18.7.18",
