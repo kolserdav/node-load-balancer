@@ -32,7 +32,7 @@ async function proxy(args) {
 
   server.listen(port, () => {
     // eslint-disable-next-line no-console
-    console.info(new Date(), 'Node proxy server listen on port:', port);
+    console.info('Node proxy server listen on port:', port);
   });
 }
 
