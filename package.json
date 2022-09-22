@@ -1,6 +1,6 @@
 {
   "name": "flight-proxy-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Node proxy server",
   "repository": "https://github.com/kolserdav/node-proxy-server.git",
   "main": "index.js",

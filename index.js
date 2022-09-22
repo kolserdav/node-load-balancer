@@ -3,6 +3,13 @@ const request = require('request');
 
 const server = express();
 
+process.on('uncaughtException', (err) => {
+  console.error('[ERROR] uncaughtException', err);
+});
+process.on('unhandledRejection', (err) => {
+  console.error('[ERROR] unhandledRejection', err);
+});
+
 /**
  * @typedef {{
  *    url: string;
